@@ -1,0 +1,209 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# - Q. Given a dictionary: 
+# - car = {"brand": "Ford”, “model":"Mustang","year":1964}
+# 
+# - Q.1. Print the value of the "model" key of the car dictionary. 
+# 
+# - Q.2. Change the "year" value from 1964 to 2020. 
+# 
+# - Q.3. Add the key/value pair "colour”: "red" to the car dictionary 
+# 
+
+# In[2]:
+
+
+# 1. Print the value of the "model" key of the car dictionary.
+car = {"brand": "Ford","model":"Mustang","year":1964}
+y=car.get("model")
+print("Model is: ", y)
+
+
+# In[5]:
+
+
+# 2. Change the "year" value from 1964 to 2020.
+car = {"brand": "Ford","model":"Mustang","year":1964}
+car["year"] = 2000
+print("Year changed to :" ,car.get("year"))
+
+
+# In[7]:
+
+
+# 3. Add the key/value pair "colour”: "red" to the car dictionary
+car = {"brand": "Ford","model":"Mustang","year":1964}
+car["color"]="red"
+print(car.get("color"))
+print(car)
+
+
+# - Q.  Given a dictionary inventory : 
+# - inventory = {'gold' : 500, 'pouch' : ['flint', 'twine', 'gemstone'], 'backpack' : ['xylophone’, ‘dagger', 'bedroll’, ‘bread’, ‘loaf']} 
+# - Q.4. Add a key to inventory called 'pocket' and Set the value of 'pocket' to be a list consisting of the strings 'seashell', 'strange berry', and 'lint'. 
+# - Q.5. Sort the items in the list stored under the 'backpack' key. 
+# - Q.6. Remove 'dagger' from the list of items stored under the 'backpack' key. 
+# - Q.7. Add 50 to the number stored under the 'gold' key. 
+# 
+
+# In[9]:
+
+
+# 4. Add a key to inventory called 'pocket' and Set the value of 'pocket' to be 
+# a list consisting of the strings 'seashell', 'strange berry', and 'lint'.
+inventory = {'gold' : 500, 'pouch' : ['flint', 'twine', 'gemstone'], 'backpack' : ['xylophone’, ‘dagger', 'bedroll’, ‘bread’, ‘loaf']}
+inventory["pocket"]=["seashell","strange berry","lint"]
+print(inventory)
+
+
+# In[11]:
+
+
+# 5. Sort the items in the list stored under the 'backpack' key.
+inventory = {'gold' : 500, 'pouch' : ['flint', 'twine', 'gemstone'], 'backpack' : ['xylophone’, ‘dagger', 'bedroll’, ‘bread’, ‘loaf']}
+inventory['backpack'].sort()
+print(inventory['backpack'])
+
+
+# In[15]:
+
+
+# 6.Remove 'dagger' from the list of items stored under the 'backpack' key. 
+inventory = {'gold' : 500, 'pouch' : ['flint', 'twine', 'gemstone'], 'backpack' : ['xylophone’, ‘dagger', 'bedroll’, ‘bread’, ‘loaf']}
+myDict = {'backpack': ['bedroll', 'bread', 'loaf', 'xylophone', 'dagger']}
+for t in myDict.values():
+    if ('dagger') in t:
+        t.remove('dagger')
+print("Removed dagger from dictionary :", myDict)
+
+
+# In[16]:
+
+
+# 7. Add 50 to the number stored under the 'gold' key.
+inventory = {'gold' : 500, 'pouch' : ['flint', 'twine', 'gemstone'], 'backpack' : ['xylophone’, ‘dagger', 'bedroll’, ‘bread’, ‘loaf']}
+inventory["gold"] += 50
+print(inventory['gold'])
+
+
+# - Q.8  Write a Python script to concatenate three dictionaries to create a new one. Make dictionaries yourself. 
+
+# In[3]:
+
+
+dict1 = {'DS': 1, 'ML': 2, 'NPL' : 3 }
+dict2 = {'AI': 4,'DS': 5,'DMN' : 6 }
+dict3={'NLP':7, 'Aug': 8,'DL': 9}
+print(dict1, dict2, dict3)
+dict4 = {**dict1, **dict2, **dict3}
+print('Updated dictionaries :' , dict4)
+
+
+# - Q.9 Write a Python program to sum all the items in a dictionary.
+
+# In[23]:
+
+
+items_dict = {'value1':624.99,'value2':298.18,'value3':543.55,'value4':456.78, 'value5':-478.9}
+print("Sum of all items in dictionary is :", sum(items_dict.values()))
+
+
+# - Q.10 Write a Python script to check whether a given key already exists in a dictionary. 
+#        d = {'foo': 100, 'bar': 200, 'baz': 300} 
+# 
+
+# In[1]:
+
+
+# First Method
+d = {'foo': 100, 'bar': 200, 'baz': 300}
+def check(z):
+    if z in d:
+        print("Given key exists")
+    else:
+        print("Given key dosn't exists")
+check('bar')
+check('bar  ')
+
+
+# In[2]:
+
+
+# Second Method
+d = {'foo': 100, 'bar': 200, 'baz': 300}
+def is_key_present(x):
+    if x in d:
+        print('Key is present in the dictionary')
+    else:
+        print('Key is not present in the dictionary')
+is_key_present('bar')
+
+
+# - Q.11 What method call will delete the entry whose value is 200? 
+
+# In[5]:
+
+
+# First Method
+values = [100, 200, 300, 400, 500, 600]
+values.remove(200)
+print(values)
+
+
+# In[8]:
+
+
+# Second Method
+values1 = [100, 200, 300, 400, 500, 600]
+def check1(value):
+    if value in values1:
+        print("Found", value, "hence deleted and the values remaining are")
+    else:
+        print("Could not find the value", value)
+check1("+200")
+check1(200)
+values1.remove(200)
+print(values1)
+
+
+# - Q.12 Write a Python program to check multiple keys exists in a dictionary.
+
+# In[11]:
+
+
+# First Method
+weeks = {"Mon":1, "Tue":2, "Wed":3, "Thu":4}
+print(weeks.keys() >= {'Mon', 'Wed'})
+print(weeks.keys() >= {'Wed', 'Thu'})
+print(weeks.keys() >= {'Mon', 'Fri'})
+
+
+# In[12]:
+
+
+# Second Method 
+# creating set of keys that we want to compare 
+s1 = set(['Mon', 'Wed']) 
+s2 = set(['Mon', 'Fri']) 
+  
+print(s1.issubset(weeks.keys())) 
+print(s2.issubset(weeks.keys()))
+
+if all(key in weeks for key in (s1)): 
+    print("keys are present") 
+else: 
+    print("keys are not present") 
+  
+# using if, all statement  
+if all(key in weeks for key in (s2)): 
+    print("keys are present") 
+else: 
+    print("keys are not present")
+
+
+# In[ ]:
+
+
+
+
